@@ -9,7 +9,8 @@ check if that element count is greater than n/2
 
 now the intuition behind this problem is very simple we consider first ele as majority now if its matching the element gets vote this means element is in more power now
 that means it still majority if no match we decrease the count decreasing means this element is nullyfying that majority ele and if count==0 means majority and 
-other elements have nullify each other so we now update count and res and consider this new ele as majority
+other elements have nullify each other so we now update count and res and consider this new ele as majority because all the rest ele have nullify each other and now
+we consider this as majority..
 refer https://youtu.be/NgLeC7DeWn4 after 12:00
 
 int majorityElement(int arr[], int n)
