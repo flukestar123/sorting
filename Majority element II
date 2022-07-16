@@ -1,0 +1,58 @@
+now if it asked to tell the no of element occuring more than n/3 no of times at max there can be 2 elements only how?
+lets prove it
+For those who have problem  in understanding why we cannot have more than 2 majority elements in this case : - 
+
+An element can be a majority element only if it appears more than floor(n/3) times, i.e it should appear atleast n/3 + 1 time . 
+Only two such elements are possible in an array. Let's prove this by contradiction.
+
+I will assume that we have three majority element possible in an array then minimum size of array is 3 * (n/3 + 1) which is equal to n + 3. 
+But we know that we have only n elements in an array , hence it is not possible to have more than 2 majority elements.
+
+https://leetcode.com/problems/majority-element-ii/discuss/1098995/Explanation-about-Boyer-Moore-vote
+read the above explanation 
+and this line is vvip
+There can be at most k - 1 major element in an array if the major element appears more than ⌊n / k⌋ times.
+
+see if both counts becomes 0 means they both have lost majority and now we pick new element which comes as the majority element because rest elements have nullified
+each other and this new ele is new and this can be a majority... see the above explanation in leetcode article is gold now we fully understand
+
+  vector<int> majorityElement(vector<int>& nums) {
+        int count1=0,count2=0,num1=INT_MIN,num2=INT_MIN;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i]==num1)
+            count1++;
+            else if(nums[i]==num2)
+            count2++;
+            else if(count1==0)
+            {
+                num1=nums[i];
+                count1++;
+            }
+            else if(count2==0)
+            {
+                num2=nums[i];
+                count2++;
+            }
+            else
+            {
+                count1--;
+                count2--;
+            }
+        }
+        count1=0,count2=0;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i]==num1)
+            count1++;
+            if(nums[i]==num2)
+            count2++;
+        }
+        vector<int> v;
+        int n=nums.size();
+        if(count1>n/3)
+        v.push_back(num1);
+        if(count2>n/3)
+        v.push_back(num2);
+        return v;
+    }
