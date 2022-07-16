@@ -1,0 +1,7 @@
+Median is middle element in the sorted array when the lenght of the array is even the median is the mean of the two middle elements and if the lenght of the array is odd
+then the median is the middle element
+you can easily do this question in O(1) space using merging method time will be O(n1+n2) you know total len which will be n1+n2 so it this lenght is odd then just find
+the (n1+n2)/2 th ele will be the answer and if lenght is even find the those two ele..
+
+now optimised approach
+the arrays are sorted so the first approach that should come to your mind should be binary search
