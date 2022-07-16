@@ -56,3 +56,7 @@ each other and this new ele is new and this can be a majority... see the above e
         v.push_back(num2);
         return v;
     }
+    
+    //see this follow up question 
+    Print all array elements appearing more than N / K times
+    will be solved in O(N) tima and space O(N) by using the map
