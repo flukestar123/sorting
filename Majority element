@@ -40,3 +40,30 @@ int majorityElement(int arr[], int n)
     else
         return arr[res];
 }
+
+///see we have made changes to code the below is now more intuitve to udersstand
+    int majorityElement(vector<int>& nums) {
+        int count=1,res=0;
+        int i;
+        for(i=1;i<nums.size();i++)
+        {
+              if(count==0)
+            {
+                res=i;
+                count=1;
+            }
+           else  if(nums[res]==nums[i])
+            count++;
+            else
+            count--;
+          
+        }
+    
+        return nums[res];
+
+    }
+    see i tell you what changes i have made see first of all if the count is becoming 0 means majority which was now and other elements have nullified each other
+    so this new element which comes should now be the majority if the count is not 0 we check 2nd else if cond and if its a match then inc count else we decrement
+    the count.. now majority 2 element explanation of leetcode aritcle is gold do check that out
+    
+    
