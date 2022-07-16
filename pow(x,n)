@@ -1,1 +1,63 @@
+now the power can either be negative or positive and the base can be decimal as well 
+now base being doesnt make any differnce but if power is negative then we have to consider that case
+you can easily do inO(n)
 
+The main idea of solution is to use as much multiplications as possible, for example how can we evaluate x^20? We can just multiply x in loop 20 times,
+but we also can evaluate x^10 and multiply it by itself!
+Similarly, x^10 = x^5 * x^5. Now we have odd power, but it is not a problem, we evaluate x^5 = x^2 * x^2 * x. We also need to deal with some border cases,
+
+Algorithm->
+If we have n = 0, return 1.//power raise 0 is 1..
+If we have negative power, return positive power of 1/x.
+Now, we have two cases: for even and for odd n, where we evaluate power n//2.
+//this code is very easy to understand as it is your own code
+      double pow(double x,int y)
+    {
+       if(y==0)
+        return 1;
+        if(x==0||x==1)
+        return x;
+     double t=myPow(x,y/2);
+     double ans;
+     if(y%2==0)
+     {
+         ans=t*t;
+      
+         return ans;
+     }
+     else
+     {
+         ans=x*t*t;
+    
+         return ans;
+     }
+    }
+ double myPow(double x, int y) {
+double ans=pow(x,abs(y));
+     if(y<0)
+        return 1/ans;
+     return ans;
+    }//we handled the negative exponent right at the end..
+    
+    //smart way to do it..
+    
+    double myPow(double x, int y) {
+     if(y==0)
+        return 1;
+     double t=myPow(x,abs(y/2));
+     double ans;
+     if(y%2==0)
+     {
+         ans=t*t;
+         if(y<0)
+        return 1/ans;
+         return ans;
+     }
+     else
+     {
+         ans=x*t*t;
+         if(y<0)
+        return 1/ans;
+         return ans;
+     }
+    }
