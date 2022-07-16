@@ -1,0 +1,41 @@
+using moore voting algorithm
+step1- we find the candidate which is majority in the array
+step2-we check if the candidate is in majority or not.
+//aprroach is consider the first element present in the array is a majority element now initialise count with 1 and res=0 res tells us the index of the majority element
+now we loop from i=1 to n-1 now if check if arr[res]==arr[i] if it is true we increment the count else we decrement the count if it any particular index if the count
+value becomes 0 we just do res=that particular index we are on and count=1 now after loop is terminated we get the index of the majority ele so just do another loop and
+check if that element count is greater than n/2
+
+
+now the intuition behind this problem is very simple we consider first ele as majority now if its matching the element gets vote this means element is in more power now
+that means it still majority if no match we decrease the count decreasing means this element is nullyfying that majority ele and if count==0 means majority and 
+other elements have nullify each other so we now update count and res and consider this new ele as majority
+refer https://youtu.be/NgLeC7DeWn4 after 12:00
+
+int majorityElement(int arr[], int n)
+{
+    int count=1; int res=0;
+    for(int i=1; i<n; i++){
+        if(arr[res] == arr[i])
+            count++;
+        else
+            count--;
+            
+        if(count==0){
+            count=1;
+            res=i;
+        }
+    }
+    
+    //2nd   res 
+    count=0;
+    for(int i=0;i<n;i++){
+        if(arr[res]==arr[i])
+            count++;
+    }
+    
+    if(count <= (n/2))
+        return -1;
+    else
+        return arr[res];
+}
